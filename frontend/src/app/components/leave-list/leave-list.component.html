@@ -1,0 +1,30 @@
+<div class="leave-list">
+  <h2>My Leave Requests</h2>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <table *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th>Days</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of requests">
+        <td>{{ r.startDate | date }}</td>
+        <td>{{ r.endDate | date }}</td>
+        <td>{{ r.totalDays }}</td>
+        <td>{{ r.reason }}</td>
+        <td>{{ r.status }}</td>
+        <td>
+          <button *ngIf="r.status === 'Pending'" (click)="cancel(r.id)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
