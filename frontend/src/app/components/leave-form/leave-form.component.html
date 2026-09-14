@@ -1,0 +1,22 @@
+<div class="leave-form">
+  <h2>Request Leave</h2>
+
+  <p *ngIf="submitted" class="success">Request submitted!</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Start date
+      <input type="date" formControlName="startDate" />
+    </label>
+    <label>
+      End date
+      <input type="date" formControlName="endDate" />
+    </label>
+    <label>
+      Reason
+      <textarea formControlName="reason" maxlength="300"></textarea>
+    </label>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+</div>
